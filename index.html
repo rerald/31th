@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>🧮 더하기 빨리 계산하기! 🧮</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 게임 시작 화면 -->
+  <section id="start-screen" class="screen">
+    <h1>🧮 더하기 빨리 계산하기! 🧮</h1>
+    <div class="desc">
+      <p>👉 7초 안에 문제를 풀고 정답을 입력하세요!</p>
+      <p>3문제 연속 정답 시 음료수 쿠폰이 지급됩니다!</p>
+      <p>준비되면 시작 버튼을 눌러주세요!</p>
+    </div>
+    <button id="start-btn">시작하기 ▶️</button>
+    <div class="timer-anim"></div>
+  </section>
+
+  <!-- 문제 출제 및 입력 화면 -->
+  <section id="quiz-screen" class="screen hidden">
+    <div class="quiz-header">
+      <span id="combo">연속 정답: 0/3</span>
+      <div id="timer-bar"></div>
+    </div>
+    <div id="question">23 + 17 = ?</div>
+    <input id="answer-input" type="text" inputmode="none" autocomplete="off" placeholder="정답 입력" readonly />
+    <div id="soft-keypad">
+      <div class="keypad-row">
+        <button class="keypad-btn">1</button>
+        <button class="keypad-btn">2</button>
+        <button class="keypad-btn">3</button>
+      </div>
+      <div class="keypad-row">
+        <button class="keypad-btn">4</button>
+        <button class="keypad-btn">5</button>
+        <button class="keypad-btn">6</button>
+      </div>
+      <div class="keypad-row">
+        <button class="keypad-btn">7</button>
+        <button class="keypad-btn">8</button>
+        <button class="keypad-btn">9</button>
+      </div>
+      <div class="keypad-row">
+        <button class="keypad-btn" id="keypad-clear">지우기</button>
+        <button class="keypad-btn">0</button>
+        <button class="keypad-btn" id="keypad-enter">확인</button>
+      </div>
+    </div>
+    <audio id="success-audio" src="Ascending 3.mp3"></audio>
+    <audio id="fail-audio" src="fail_01.mp3"></audio>
+    <img id="fail-img" src="ggg.png" class="hidden" alt="실패 이미지" />
+  </section>
+
+  <!-- 정답 성공 메시지 화면 (1초간 표시) -->
+  <section id="success-screen" class="screen hidden">
+    <div class="message">🎯 정답입니다!</div>
+  </section>
+
+  <!-- 실패 화면 -->
+  <section id="fail-screen" class="screen hidden">
+    <div class="message">❌ 오답 또는 시간 초과!</div>
+    <button id="retry-btn">다시 하기 🔁</button>
+    <button id="home-btn">홈으로 🏠</button>
+    <img id="fail-img2" src="ggg.png" class="hidden" alt="실패 이미지" />
+  </section>
+
+  <!-- 쿠폰 지급 화면 -->
+  <section id="coupon-screen" class="screen hidden">
+    <div class="message">🎉 축하합니다! 3문제를 연속 정답하셨어요!</div>
+    <div id="coupon-canvas-wrap">
+      <canvas id="coupon-canvas" width="300" height="150"></canvas>
+    </div>
+    <audio id="coupon-audio" src="suc_01.mp3"></audio>
+    <button id="save-coupon-btn">쿠폰 저장하기 💾</button>
+    <button id="home-btn2">홈으로 🏠</button>
+  </section>
+
+  <script src="game.js"></script>
+</body>
+</html> 
